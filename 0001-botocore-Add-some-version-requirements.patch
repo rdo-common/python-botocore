@@ -1,0 +1,25 @@
+From ad4f33015b5031d21c254be7ede1a3c2ac958581 Mon Sep 17 00:00:00 2001
+From: Lubomir Rintel <lkundrak@v3.sk>
+Date: Fri, 25 Jul 2014 15:11:57 +0200
+Subject: [PATCH] botocore: Add some version requirements
+
+---
+ setup.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/setup.py b/setup.py
+index 331f5ba..a50844a 100644
+--- a/setup.py
++++ b/setup.py
+@@ -12,7 +12,7 @@ from setuptools import setup, find_packages
+ 
+ requires = ['six>=1.1.0',
+             'jmespath==0.4.1',
+-            'python-dateutil>=2.1']
++            'python-dateutil>=1.5']
+ 
+ 
+ if sys.version_info[:2] == (2, 6):
+-- 
+1.8.3.1
+
