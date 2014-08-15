@@ -11,7 +11,7 @@ Summary:        The low-level, core functionality of boto 3
 Group:          System Environment/Libraries
 
 License:        ASL 2.0
-URL:            http://aws.amazon.com/cli/
+URL:            https://github.com/boto/botocore
 Source0:        https://pypi.python.org/packages/source/b/botocore/botocore-%{version}.tar.gz
 Patch0:         0001-botocore-Add-some-version-requirements.patch
 Patch1:         0001-Do-not-use-bundled-requests.patch
