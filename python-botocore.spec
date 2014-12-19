@@ -5,8 +5,8 @@
 %endif
 
 Name:           python-botocore
-Version:        0.58.0
-Release:        2%{?dist}
+Version:        0.79.0
+Release:        1%{?dist}
 Summary:        The low-level, core functionality of boto 3
 Group:          System Environment/Libraries
 
@@ -21,18 +21,18 @@ BuildArch:      noarch
 BuildRequires:  python2-devel
 BuildRequires:  python-setuptools
 BuildRequires:  python-six >= 1.1.0
-BuildRequires:  python-jmespath >= 0.4.1
+BuildRequires:  python-jmespath = 0.5.0
 BuildRequires:  python-dateutil >= 1.5
 %if %with python3
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-six >= 1.1.0
-BuildRequires:  python3-jmespath >= 0.4.1
+BuildRequires:  python3-jmespath = 0.5.0
 BuildRequires:  python3-dateutil >= 1.5
 %endif
 
 Requires:       python-six >= 1.1.0
-Requires:       python-jmespath >= 0.4.1
+Requires:       python-jmespath = 0.5.0
 Requires:       python-dateutil >= 1.5
 Requires:       python-requests
 Requires:       python-urllib3
@@ -48,7 +48,7 @@ Summary:        The low-level, core functionality of boto 3
 Group:          System Environment/Libraries
 
 Requires:       python3-six >= 1.1.0
-Requires:       python3-jmespath >= 0.4.1
+Requires:       python3-jmespath = 0.5.0
 Requires:       python3-dateutil >= 1.5
 Requires:       python3-requests
 Requires:       python3-urllib3
@@ -119,6 +119,9 @@ popd
 
 
 %changelog
+* Fri Dec 19 2014 Lubomir Rintel <lkundrak@v3.sk> - 0.79.0-1
+- New version
+
 * Fri Jul 25 2014 Lubomir Rintel <lkundrak@v3.sk> - 0.58.0-2
 - Add Python 3 support
 

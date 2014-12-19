@@ -1,40 +1,29 @@
-From cb67f78430fcc49b14b8c74d60f1d99e75c59c26 Mon Sep 17 00:00:00 2001
+From 0d6a559495203194128911071f7c2d0a21bd1500 Mon Sep 17 00:00:00 2001
 From: Lubomir Rintel <lkundrak@v3.sk>
 Date: Fri, 25 Jul 2014 15:21:22 +0200
 Subject: [PATCH] Do not use bundled requests
 
 ---
- botocore.egg-info/requires.txt |  2 +-
- botocore/awsrequest.py         | 12 ++++++------
- botocore/endpoint.py           |  4 ++--
- botocore/retryhandler.py       |  4 ++--
- botocore/utils.py              |  2 +-
+ botocore/awsrequest.py   | 12 ++++++------
+ botocore/compat.py       |  2 +-
+ botocore/endpoint.py     |  4 ++--
+ botocore/retryhandler.py |  4 ++--
+ botocore/utils.py        |  2 +-
  5 files changed, 12 insertions(+), 12 deletions(-)
 
-diff --git a/botocore.egg-info/requires.txt b/botocore.egg-info/requires.txt
-index 4f44845..63b8ff4 100644
---- a/botocore.egg-info/requires.txt
-+++ b/botocore.egg-info/requires.txt
-@@ -1,3 +1,3 @@
- six>=1.1.0
- jmespath==0.4.1
--python-dateutil>=2.1
-\ No newline at end of file
-+python-dateutil>=1.5
-\ No newline at end of file
 diff --git a/botocore/awsrequest.py b/botocore/awsrequest.py
-index 1e848b3..527f578 100644
+index bf4a4da..ccc01a6 100644
 --- a/botocore/awsrequest.py
 +++ b/botocore/awsrequest.py
-@@ -17,14 +17,14 @@ import functools
+@@ -19,14 +19,14 @@ import socket
  import inspect
  
- import six
+ from botocore.compat import six
 -from botocore.vendored.requests import models
 -from botocore.vendored.requests.sessions import REDIRECT_STATI
 +from requests import models
 +from requests.sessions import REDIRECT_STATI
- from botocore.compat import HTTPHeaders, file_type, HTTPResponse
+ from botocore.compat import HTTPHeaders, HTTPResponse
  from botocore.exceptions import UnseekableStreamError
 -from botocore.vendored.requests.packages.urllib3.connection import VerifiedHTTPSConnection
 -from botocore.vendored.requests.packages.urllib3.connection import HTTPConnection
@@ -47,8 +36,21 @@ index 1e848b3..527f578 100644
  
  
  logger = logging.getLogger(__name__)
+diff --git a/botocore/compat.py b/botocore/compat.py
+index f759ccb..97adeb4 100644
+--- a/botocore/compat.py
++++ b/botocore/compat.py
+@@ -16,7 +16,7 @@ import datetime
+ import sys
+ import inspect
+ 
+-from botocore.vendored import six
++import six
+ 
+ 
+ if six.PY3:
 diff --git a/botocore/endpoint.py b/botocore/endpoint.py
-index 28555a6..e718f54 100644
+index 963068d..9409499 100644
 --- a/botocore/endpoint.py
 +++ b/botocore/endpoint.py
 @@ -17,8 +17,8 @@ import logging
@@ -59,11 +61,11 @@ index 28555a6..e718f54 100644
 -from botocore.vendored.requests.utils import get_environ_proxies
 +from requests.sessions import Session
 +from requests.utils import get_environ_proxies
- import six
  
  import botocore.response
+ import botocore.exceptions
 diff --git a/botocore/retryhandler.py b/botocore/retryhandler.py
-index 857916e..5a42db3 100644
+index 2505db2..c12d2e0 100644
 --- a/botocore/retryhandler.py
 +++ b/botocore/retryhandler.py
 @@ -17,8 +17,8 @@ import functools
@@ -78,18 +80,18 @@ index 857916e..5a42db3 100644
  from botocore.exceptions import ChecksumError
  
 diff --git a/botocore/utils.py b/botocore/utils.py
-index 95b8757..2139284 100644
+index 91d5fd0..4c0db61 100644
 --- a/botocore/utils.py
 +++ b/botocore/utils.py
-@@ -16,7 +16,7 @@ from six import string_types, text_type
+@@ -20,7 +20,7 @@ from dateutil.tz import tzlocal, tzutc
  
  from botocore.exceptions import InvalidExpressionError, ConfigNotFound
  from botocore.compat import json, quote
 -from botocore.vendored import requests
 +import requests
+ from botocore.compat import OrderedDict
  
  
- logger = logging.getLogger(__name__)
 -- 
-1.8.3.1
+2.1.0
 
