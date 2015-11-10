@@ -6,7 +6,7 @@
 
 Name:           python-botocore
 Version:        0.79.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        The low-level, core functionality of boto 3
 Group:          System Environment/Libraries
 
@@ -119,6 +119,9 @@ popd
 
 
 %changelog
+* Tue Nov 10 2015 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.79.0-3
+- Rebuilt for https://fedoraproject.org/wiki/Changes/python3.5
+
 * Thu Jun 18 2015 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.79.0-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_23_Mass_Rebuild
 
