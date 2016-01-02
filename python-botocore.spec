@@ -10,7 +10,7 @@
 %endif
 
 %global with_docs 0
-%global with_tests 1
+%global with_tests 0
 
 %global pypi_name botocore
 
