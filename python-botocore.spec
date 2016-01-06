@@ -15,7 +15,7 @@
 %global pypi_name botocore
 
 Name:           python-%{pypi_name}
-Version:        1.3.15
+Version:        1.3.16
 Release:        1%{?dist}
 Summary:        Low-level, data-driven core of boto 3
 
@@ -62,6 +62,7 @@ Requires:       python-dateutil
 Requires:       python-docutils
 Requires:       python-requests
 Requires:       python-urllib3
+%{?el6:Provides: python-%{pypi_name}}
 %{?python_provide:%python_provide python2-%{pypi_name}}
 
 %description -n python2-%{pypi_name}
@@ -144,6 +145,10 @@ rm -rf html/.{doctrees,buildinfo}
 %endif # with_docs
 
 %changelog
+* Wed Jan 06 2016 Fabio Alessandro Locati <fabio@locati.cc> - 1.3.16-1
+- Update to new upstream version
+- Fix Provides for EL6
+
 * Tue Dec 29 2015 Fabio Alessandro Locati <fabio@locati.cc> - 1.3.15-1
 - Update to current version
 - Improve the spec
