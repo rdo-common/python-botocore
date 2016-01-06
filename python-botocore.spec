@@ -61,7 +61,6 @@ Requires:       python-jmespath
 Requires:       python-dateutil
 Requires:       python-docutils
 Requires:       python-requests
-Requires:       python-urllib3
 %{?el6:Provides: python-%{pypi_name}}
 %{?python_provide:%python_provide python2-%{pypi_name}}
 
@@ -76,7 +75,6 @@ Requires:       python3-jmespath
 Requires:       python3-dateutil
 Requires:       python3-docutils
 Requires:       python3-requests
-Requires:       python3-urllib3
 %{?python_provide:%python_provide python3-%{pypi_name}}
 
 %description -n python3-%{pypi_name}
@@ -147,6 +145,11 @@ rm -rf html/.{doctrees,buildinfo}
 %endif # with_docs
 
 %changelog
+* Wed Jan 06 2016 Fabio Alessandro Locati <fabio@locati.cc> - 1.3.16-2
+- Fix shabang on botocore/vendored/requests/packages/chardet/chardetect.py
+- Fix shabang on botocore/vendored/requests/certs.py
+- Remove the useless dependency with python-urllib3
+
 * Wed Jan 06 2016 Fabio Alessandro Locati <fabio@locati.cc> - 1.3.16-1
 - Update to new upstream version
 - Fix Provides for EL6
