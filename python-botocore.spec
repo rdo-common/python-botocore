@@ -90,7 +90,7 @@ Documentation for botocore
 %endif # with_docs
 
 %prep
-%setup -n %{pypi_name}-%{version}
+%setup -q -n %{pypi_name}-%{version}
 sed -i -e '1 d' botocore/vendored/requests/packages/chardet/chardetect.py
 sed -i -e '1 d' botocore/vendored/requests/certs.py
 rm -rf %{pypi_name}.egg-info
