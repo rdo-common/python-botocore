@@ -15,8 +15,8 @@
 %global pypi_name botocore
 
 Name:           python-%{pypi_name}
-Version:        1.3.16
-Release:        2%{?dist}
+Version:        1.3.17
+Release:        1%{?dist}
 Summary:        Low-level, data-driven core of boto 3
 
 License:        ASL 2.0
@@ -145,6 +145,9 @@ rm -rf html/.{doctrees,buildinfo}
 %endif # with_docs
 
 %changelog
+* Thu Jan 07 2016 Fabio Alessandro Locati <fabio@locati.cc> - 1.3.17-1
+- Update to upstream version
+
 * Wed Jan 06 2016 Fabio Alessandro Locati <fabio@locati.cc> - 1.3.16-2
 - Fix shabang on botocore/vendored/requests/packages/chardet/chardetect.py
 - Fix shabang on botocore/vendored/requests/certs.py
