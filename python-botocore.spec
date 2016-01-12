@@ -5,18 +5,19 @@
 %{!?python2_sitearch: %global python2_sitearch %(%{__python2} -c "from distutils.sysconfig import get_python_lib; print(get_python_lib(1))")}
 %{!?py2_build: %global py2_build %{expand: CFLAGS="%{optflags}" %{__python2} setup.py %{?py_setup_args} build --executable="%{__python2} -s"}}
 %{!?py2_install: %global py2_install %{expand: CFLAGS="%{optflags}" %{__python2} setup.py %{?py_setup_args} install -O1 --skip-build --root %{buildroot}}}
+%global with_tests 0
 %else
 %global with_python3 1
+%global with_tests 1
 %endif
 
 %global with_docs 0
-%global with_tests 0
 
 %global pypi_name botocore
 
 Name:           python-%{pypi_name}
 Version:        1.3.17
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Low-level, data-driven core of boto 3
 
 License:        ASL 2.0
@@ -145,6 +146,9 @@ rm -rf html/.{doctrees,buildinfo}
 %endif # with_docs
 
 %changelog
+* Tue Jan 12 2016 Fabio Alessandro Locati <fabio@locati.cc> - 1.3.17-2
+- Add testing for Fedora
+
 * Thu Jan 07 2016 Fabio Alessandro Locati <fabio@locati.cc> - 1.3.17-1
 - Update to upstream version
 
