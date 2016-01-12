@@ -45,6 +45,7 @@ BuildRequires:  python3-sphinx
 BuildRequires:  python3-guzzle_sphinx_theme
 %endif # with_docs
 %if 0%{?with_tests}
+BuildRequires:  python3-six
 BuildRequires:  python3-tox
 BuildRequires:  python3-docutils
 BuildRequires:  python3-dateutil
