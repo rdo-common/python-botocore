@@ -5,19 +5,28 @@
 %{!?python2_sitearch: %global python2_sitearch %(%{__python2} -c "from distutils.sysconfig import get_python_lib; print(get_python_lib(1))")}
 %{!?py2_build: %global py2_build %{expand: CFLAGS="%{optflags}" %{__python2} setup.py %{?py_setup_args} build --executable="%{__python2} -s"}}
 %{!?py2_install: %global py2_install %{expand: CFLAGS="%{optflags}" %{__python2} setup.py %{?py_setup_args} install -O1 --skip-build --root %{buildroot}}}
-%global with_tests 0
 %else
 %global with_python3 1
-%global with_tests 1
 %endif
-
-%global with_docs 0
 
 %global pypi_name botocore
 
+# Enable tests
+%global with_tests 1
+# Disable documentation generation for now
+%global with_docs 0
+
+# Something breaks for now
+%if 0%{?fedora} > 23
+%global with_tests 0
+%endif
+
+# Tests not yet ready for EL
+%{?rhel: %global with_tests 0}
+
 Name:           python-%{pypi_name}
-Version:        1.3.17
-Release:        2%{?dist}
+Version:        1.3.18
+Release:        1%{?dist}
 Summary:        Low-level, data-driven core of boto 3
 
 License:        ASL 2.0
@@ -32,7 +41,11 @@ BuildRequires:  python-sphinx
 BuildRequires:  python-guzzle_sphinx_theme
 %endif # with_docs
 %if 0%{?with_tests}
+BuildRequires:  mock
 BuildRequires:  python-tox
+BuildRequires:  python-behave
+BuildRequires:  python-nose
+BuildRequires:  python-wheel
 BuildRequires:  python-docutils
 BuildRequires:  python-dateutil
 BuildRequires:  python2-jmespath
@@ -45,7 +58,9 @@ BuildRequires:  python3-sphinx
 BuildRequires:  python3-guzzle_sphinx_theme
 %endif # with_docs
 %if 0%{?with_tests}
-BuildRequires:  python3-six
+BuildRequires:  python3-behave
+BuildRequires:  python3-nose
+BuildRequires:  python3-wheel
 BuildRequires:  python3-tox
 BuildRequires:  python3-docutils
 BuildRequires:  python3-dateutil
@@ -147,6 +162,9 @@ rm -rf html/.{doctrees,buildinfo}
 %endif # with_docs
 
 %changelog
+* Wed Jan 13 2016 Fabio Alessandro Locati <fabio@locati.cc> - 1.3.18-1
+- New version from upstream
+
 * Tue Jan 12 2016 Fabio Alessandro Locati <fabio@locati.cc> - 1.3.17-2
 - Add testing for Fedora
 
