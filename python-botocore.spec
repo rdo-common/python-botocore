@@ -58,7 +58,7 @@ BuildRequires:  python3-sphinx
 BuildRequires:  python3-guzzle_sphinx_theme
 %endif # with_docs
 %if 0%{?with_tests}
-BuildRequires:  python3-behave
+%{?fc24:BuildRequires: python3-behave}
 BuildRequires:  python3-nose
 BuildRequires:  python3-wheel
 BuildRequires:  python3-tox
