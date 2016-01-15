@@ -17,7 +17,7 @@
 %global with_docs 0
 
 # Something breaks for now
-%if 0%{?fedora} > 23
+%if 0%{?fedora} != 23
 %global with_tests 0
 %endif
 
