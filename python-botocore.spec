@@ -25,7 +25,7 @@
 %{?rhel: %global with_tests 0}
 
 Name:           python-%{pypi_name}
-Version:        1.3.18
+Version:        1.3.19
 Release:        1%{?dist}
 Summary:        Low-level, data-driven core of boto 3
 
@@ -162,6 +162,9 @@ rm -rf html/.{doctrees,buildinfo}
 %endif # with_docs
 
 %changelog
+* Fri Jan 15 2016 Fabio Alessandro Locati <fabio@locati.cc> - 1.3.19-1
+- New version from upstream
+
 * Wed Jan 13 2016 Fabio Alessandro Locati <fabio@locati.cc> - 1.3.18-1
 - New version from upstream
 
