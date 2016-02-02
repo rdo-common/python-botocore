@@ -162,7 +162,7 @@ rm -rf html/.{doctrees,buildinfo}
 %endif # with_docs
 
 %changelog
-* Mon Feb 02 2016 Fabio Alessandro Locati <fabio@locati.cc> - 1.3.23-1
+* Tue Feb 02 2016 Fabio Alessandro Locati <fabio@locati.cc> - 1.3.23-1
 - New version from upstream
 
 * Fri Jan 22 2016 Fabio Alessandro Locati <fabio@locati.cc> - 1.3.22-1
