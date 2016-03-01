@@ -16,16 +16,11 @@
 # Disable documentation generation for now
 %global with_docs 0
 
-# Something breaks for now
-%if 0%{?fedora} != 23
-%global with_tests 0
-%endif
-
 # Tests not yet ready for EL
 %{?rhel: %global with_tests 0}
 
 Name:           python-%{pypi_name}
-Version:        1.3.29
+Version:        1.3.30
 Release:        1%{?dist}
 Summary:        Low-level, data-driven core of boto 3
 
@@ -111,6 +106,8 @@ Documentation for botocore
 sed -i -e '1 d' botocore/vendored/requests/packages/chardet/chardetect.py
 sed -i -e '1 d' botocore/vendored/requests/certs.py
 rm -rf %{pypi_name}.egg-info
+# Remove online tests
+rm -rf tests/integration
 
 %build
 %py2_build
@@ -162,6 +159,9 @@ rm -rf html/.{doctrees,buildinfo}
 %endif # with_docs
 
 %changelog
+* Tue Mar 01 2016 Fabio Alessandro Locati <fabio@locati.cc> - 1.3.30-1
+- New version from upstream
+
 * Wed Feb 24 2016 Fabio Alessandro Locati <fabio@locati.cc> - 1.3.29-1
 - New version from upstream
 
