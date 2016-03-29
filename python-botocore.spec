@@ -40,6 +40,7 @@ BuildRequires:  mock
 BuildRequires:  python-tox
 BuildRequires:  python-behave
 BuildRequires:  python-nose
+BuildRequires:  python-six
 BuildRequires:  python-wheel
 BuildRequires:  python-docutils
 BuildRequires:  python-dateutil
@@ -55,6 +56,7 @@ BuildRequires:  python3-guzzle_sphinx_theme
 %if 0%{?with_tests}
 %{?fc24:BuildRequires: python3-behave}
 BuildRequires:  python3-nose
+BuildRequires:  python3-six
 BuildRequires:  python3-wheel
 BuildRequires:  python3-tox
 BuildRequires:  python3-docutils
