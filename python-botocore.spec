@@ -75,10 +75,9 @@ botocore package is the foundation for the AWS CLI as well as boto3.
 
 %package -n     python2-%{pypi_name}
 Summary:        Low-level, data-driven core of boto 3
-Requires:       python-jmespath
-Requires:       python-dateutil
-Requires:       python-docutils
-Requires:       python-requests
+Requires:       python-jmespath >= 0.7.1
+Requires:       python-dateutil >= 2.1
+Requires:       python-docutils >= 0.10
 %{?el6:Provides: python-%{pypi_name}}
 %{?python_provide:%python_provide python2-%{pypi_name}}
 
@@ -89,10 +88,9 @@ botocore package is the foundation for the AWS CLI as well as boto3.
 %if 0%{?with_python3}
 %package -n     python3-%{pypi_name}
 Summary:        Low-level, data-driven core of boto 3
-Requires:       python3-jmespath
-Requires:       python3-dateutil
-Requires:       python3-docutils
-Requires:       python3-requests
+Requires:       python3-jmespath >= 0.7.1
+Requires:       python3-dateutil >= 2.1
+Requires:       python3-docutils >= 0.10
 %{?python_provide:%python_provide python3-%{pypi_name}}
 
 %description -n python3-%{pypi_name}
