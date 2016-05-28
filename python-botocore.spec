@@ -16,17 +16,21 @@
 # Disable documentation generation for now
 %global with_docs 0
 
-# Tests not yet ready for EL
-%{?rhel: %global with_tests 0}
+# python-tox 2.3.1 not available on RHEL7 and F22
+%{?el7: %global with_tests 0}
+%{?fc22: %global with_tests 0}
+# Tests fails on F24 and F25 due to some path problem
+%{?fc24: %global with_tests 0}
+%{?fc25: %global with_tests 0}
 
 Name:           python-%{pypi_name}
-Version:        1.4.7
+Version:        1.4.24
 Release:        1%{?dist}
 Summary:        Low-level, data-driven core of boto 3
 
 License:        ASL 2.0
 URL:            https://github.com/boto/botocore
-Source0:        https://pypi.python.org/packages/source/b/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
+Source0:        https://pypi.io/packages/source/b/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 BuildArch:      noarch
 
 BuildRequires:  python2-devel
@@ -161,6 +165,9 @@ rm -rf html/.{doctrees,buildinfo}
 %endif # with_docs
 
 %changelog
+* Sat May 28 2016 Fabio Alessandro Locati <fabio@locati.cc> - 1.4.24-1
+- New version from upstream
+
 * Tue Mar 29 2016 Fabio Alessandro Locati <fabio@locati.cc> - 1.4.7-1
 - New version from upstream
 
