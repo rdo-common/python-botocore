@@ -163,7 +163,7 @@ rm -rf html/.{doctrees,buildinfo}
 %endif # with_docs
 
 %changelog
-* Mon Jul 06 2016 Fabio Alessandro Locati <fale@redhat.com> - 1.4.35-1
+* Wed Jul 06 2016 Fabio Alessandro Locati <fale@redhat.com> - 1.4.35-1
 - New version from upstream
 
 * Wed Jun 08 2016 Fabio Alessandro Locati <fale@redhat.com> - 1.4.26-1
