@@ -25,7 +25,7 @@
 
 Name:           python-%{pypi_name}
 Version:        1.4.35
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Low-level, data-driven core of boto 3
 
 License:        ASL 2.0
@@ -163,6 +163,9 @@ rm -rf html/.{doctrees,buildinfo}
 %endif # with_docs
 
 %changelog
+* Tue Jul 19 2016 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.4.35-2
+- https://fedoraproject.org/wiki/Changes/Automatic_Provides_for_Python_RPM_Packages
+
 * Wed Jul 06 2016 Fabio Alessandro Locati <fale@redhat.com> - 1.4.35-1
 - New version from upstream
 
