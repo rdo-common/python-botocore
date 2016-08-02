@@ -166,6 +166,9 @@ rm -rf html/.{doctrees,buildinfo}
 * Tue Aug 02 2016 Fabio Alessandro Locati <fale@redhat.com> - 1.4.41-1
 - Upstream update
 
+* Tue Jul 19 2016 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.4.35-2
+- https://fedoraproject.org/wiki/Changes/Automatic_Provides_for_Python_RPM_Packages
+
 * Wed Jul 06 2016 Fabio Alessandro Locati <fale@redhat.com> - 1.4.35-1
 - New version from upstream
 
