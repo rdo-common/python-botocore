@@ -24,7 +24,7 @@
 %{?fc25: %global with_tests 0}
 
 Name:           python-%{pypi_name}
-Version:        1.4.35
+Version:        1.4.41
 Release:        1%{?dist}
 Summary:        Low-level, data-driven core of boto 3
 
@@ -163,6 +163,9 @@ rm -rf html/.{doctrees,buildinfo}
 %endif # with_docs
 
 %changelog
+* Tue Aug 02 2016 Fabio Alessandro Locati <fale@redhat.com> - 1.4.41-1
+- Upstream update
+
 * Wed Jul 06 2016 Fabio Alessandro Locati <fale@redhat.com> - 1.4.35-1
 - New version from upstream
 
