@@ -22,9 +22,10 @@
 # Tests fails on F24 and F25 due to some path problem
 %{?fc24: %global with_tests 0}
 %{?fc25: %global with_tests 0}
+%{?fc26: %global with_tests 0}
 
 Name:           python-%{pypi_name}
-Version:        1.4.41
+Version:        1.4.42
 Release:        1%{?dist}
 Summary:        Low-level, data-driven core of boto 3
 
@@ -40,7 +41,7 @@ BuildRequires:  python-sphinx
 BuildRequires:  python-guzzle_sphinx_theme
 %endif # with_docs
 %if 0%{?with_tests}
-BuildRequires:  mock
+BuildRequires:  python2-mock
 BuildRequires:  python-tox
 BuildRequires:  python-behave
 BuildRequires:  python-nose
@@ -59,6 +60,7 @@ BuildRequires:  python3-guzzle_sphinx_theme
 %endif # with_docs
 %if 0%{?with_tests}
 %{?fc24:BuildRequires: python3-behave}
+BuildRequires:  python3-mock
 BuildRequires:  python3-nose
 BuildRequires:  python3-six
 BuildRequires:  python3-wheel
@@ -136,9 +138,11 @@ rm -rf html/.{doctrees,buildinfo}
 
 %if 0%{?with_tests}
 %check
-%{__python2} setup.py test
+# %{__python2} setup.py test
+nosetests-2.7 --with-coverage --cover-erase --cover-package botocore --with-xunit --cover-xml -v tests/unit/ tests/functional/
 %if 0%{?with_python3}
-%{__python3} setup.py test
+# %{__python3} setup.py test
+nosetests-3.5 --with-coverage --cover-erase --cover-package botocore --with-xunit --cover-xml -v tests/unit/ tests/functional/
 %endif # with_python3
 %endif # with_tests
 
@@ -163,6 +167,9 @@ rm -rf html/.{doctrees,buildinfo}
 %endif # with_docs
 
 %changelog
+* Thu Aug 04 2016 Fabio Alessandro Locati <fale@redhat.com> - 1.4.42-1
+- Upstream update
+
 * Tue Aug 02 2016 Fabio Alessandro Locati <fale@redhat.com> - 1.4.41-1
 - Upstream update
 
