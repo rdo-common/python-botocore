@@ -40,8 +40,8 @@ BuildRequires:  python-sphinx
 BuildRequires:  python-guzzle_sphinx_theme
 %endif # with_docs
 %if 0%{?with_tests}
-%{?fc23: BuildRequires:  mock}
-%{!?fc23: BuildRequires:  python2-mock}
+%{?fc23:BuildRequires: mock}
+%{!?fc23:BuildRequires: python2-mock}
 BuildRequires:  python-tox
 BuildRequires:  python-behave
 BuildRequires:  python-nose
