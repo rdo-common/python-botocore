@@ -18,7 +18,6 @@
 
 # python-tox 2.3.1 not available on RHEL7 and F22
 %{?el7: %global with_tests 0}
-%{?fc22: %global with_tests 0}
 # Tests fails on F24 and F25 due to some path problem
 %{?fc24: %global with_tests 0}
 %{?fc25: %global with_tests 0}
@@ -41,7 +40,8 @@ BuildRequires:  python-sphinx
 BuildRequires:  python-guzzle_sphinx_theme
 %endif # with_docs
 %if 0%{?with_tests}
-BuildRequires:  python2-mock
+%{?fc23: BuildRequires:  mock}
+%{!?fc23: BuildRequires:  python2-mock}
 BuildRequires:  python-tox
 BuildRequires:  python-behave
 BuildRequires:  python-nose
