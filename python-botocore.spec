@@ -16,11 +16,8 @@
 # Disable documentation generation for now
 %global with_docs 0
 
-# python-tox 2.3.1 not available on RHEL7 and F22
-%{?el7: %global with_tests 0}
-
 Name:           python-%{pypi_name}
-Version:        1.4.49
+Version:        1.4.50
 Release:        1%{?dist}
 Summary:        Low-level, data-driven core of boto 3
 
@@ -38,7 +35,6 @@ BuildRequires:  python-guzzle_sphinx_theme
 %if 0%{?with_tests}
 %{?fc23:BuildRequires: mock}
 %{!?fc23:BuildRequires: python2-mock}
-BuildRequires:  python-tox
 BuildRequires:  python-behave
 BuildRequires:  python-nose
 BuildRequires:  python-six
@@ -60,7 +56,6 @@ BuildRequires:  python3-mock
 BuildRequires:  python3-nose
 BuildRequires:  python3-six
 BuildRequires:  python3-wheel
-BuildRequires:  python3-tox
 BuildRequires:  python3-docutils
 BuildRequires:  python3-dateutil
 BuildRequires:  python3-jmespath
@@ -97,10 +92,10 @@ botocore package is the foundation for the AWS CLI as well as boto3.
 %endif # with_python3
 
 %if 0%{?with_docs}
-%package -n python-%{pypi_name}-doc
-Summary:        botocore documentation
-%description -n python-%{pypi_name}-doc
-Documentation for botocore
+%package doc
+Summary:        Documentation for %{name}
+%description doc
+%{summary}.
 %endif # with_docs
 
 %prep
@@ -142,27 +137,31 @@ nosetests-3.5 --with-coverage --cover-erase --cover-package botocore --with-xuni
 %endif # with_python3
 %endif # with_tests
 
-%files -n python2-%{pypi_name}
 %{!?_licensedir:%global license %doc}
+
+%files -n python2-%{pypi_name}
 %doc README.rst
 %license LICENSE.txt
-%{python2_sitelib}/%{pypi_name}
-%{python2_sitelib}/%{pypi_name}-%{version}-py?.?.egg-info
+%{python2_sitelib}/%{pypi_name}/
+%{python2_sitelib}/%{pypi_name}-*.egg-info/
 
 %if 0%{?with_python3}
 %files -n python3-%{pypi_name}
 %doc README.rst
 %license LICENSE.txt
-%{python3_sitelib}/%{pypi_name}
-%{python3_sitelib}/%{pypi_name}-%{version}-py?.?.egg-info
+%{python3_sitelib}/%{pypi_name}/
+%{python3_sitelib}/%{pypi_name}-*.egg-info/
 %endif # with_python3
 
 %if 0%{?with_docs}
-%files -n python-%{pypi_name}-doc
+%files doc
 %doc html
 %endif # with_docs
 
 %changelog
+* Sat Sep 03 2016 Igor Gnatenko <i.gnatenko.brain@gmail.com> - 1.4.50-1
+- Update to 1.4.50
+
 * Wed Aug 24 2016 Fabio Alessandro Locati <fale@redhat.com> - 1.4.49-1
 - Upstream update
 
