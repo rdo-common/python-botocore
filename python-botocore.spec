@@ -17,7 +17,7 @@
 %global with_docs 0
 
 Name:           python-%{pypi_name}
-Version:        1.4.50
+Version:        1.4.52
 Release:        1%{?dist}
 Summary:        Low-level, data-driven core of boto 3
 
@@ -159,6 +159,9 @@ nosetests-3.5 --with-coverage --cover-erase --cover-package botocore --with-xuni
 %endif # with_docs
 
 %changelog
+* Wed Sep 07 2016 Fabio Alessandro Locati <fale@redhat.com> - 1.4.52-1
+- Update to 1.4.52
+
 * Sat Sep 03 2016 Igor Gnatenko <i.gnatenko.brain@gmail.com> - 1.4.50-1
 - Update to 1.4.50
 
