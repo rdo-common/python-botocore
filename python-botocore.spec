@@ -14,7 +14,7 @@
 
 Name:           python-%{pypi_name}
 Version:        1.4.52
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Low-level, data-driven core of boto 3
 
 License:        ASL 2.0
@@ -165,6 +165,9 @@ nosetests-3.5 --with-coverage --cover-erase --cover-package botocore --with-xuni
 %endif # with_docs
 
 %changelog
+* Tue Sep 13 2016 Fabio Alessandro Locati <fale@redhat.com> - 1.4.52-3
+- Fix patch
+
 * Tue Sep 13 2016 Fabio Alessandro Locati <fale@redhat.com> - 1.4.52-2
 - Add testing support for EL7 using a lower version of dateuil library
 
