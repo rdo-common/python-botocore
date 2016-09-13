@@ -1,10 +1,6 @@
-%if 0%{?rhel}
+%if 0%{?rhel} && 0%{?rhel} <= 7
 %global with_python3 0
-%{!?__python2: %global __python2 /usr/bin/python2}
-%{!?python2_sitelib: %global python2_sitelib %(%{__python2} -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")}
-%{!?python2_sitearch: %global python2_sitearch %(%{__python2} -c "from distutils.sysconfig import get_python_lib; print(get_python_lib(1))")}
-%{!?py2_build: %global py2_build %{expand: CFLAGS="%{optflags}" %{__python2} setup.py %{?py_setup_args} build --executable="%{__python2} -s"}}
-%{!?py2_install: %global py2_install %{expand: CFLAGS="%{optflags}" %{__python2} setup.py %{?py_setup_args} install -O1 --skip-build --root %{buildroot}}}
+%global fix_dateutil 1
 %else
 %global with_python3 1
 %endif
@@ -18,12 +14,13 @@
 
 Name:           python-%{pypi_name}
 Version:        1.4.52
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Low-level, data-driven core of boto 3
 
 License:        ASL 2.0
 URL:            https://github.com/boto/botocore
 Source0:        https://pypi.io/packages/source/b/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
+Patch0:         botocore-1.4.52-fix_dateutil_version.patch
 BuildArch:      noarch
 
 BuildRequires:  python2-devel
@@ -69,7 +66,11 @@ botocore package is the foundation for the AWS CLI as well as boto3.
 %package -n     python2-%{pypi_name}
 Summary:        Low-level, data-driven core of boto 3
 Requires:       python-jmespath >= 0.7.1
+%if 0%{?fix_dateutil}
+Requires:       python-dateutil >= 1.4
+%else
 Requires:       python-dateutil >= 2.1
+%endif
 Requires:       python-docutils >= 0.10
 %{?el6:Provides: python-%{pypi_name}}
 %{?python_provide:%python_provide python2-%{pypi_name}}
@@ -82,7 +83,11 @@ botocore package is the foundation for the AWS CLI as well as boto3.
 %package -n     python3-%{pypi_name}
 Summary:        Low-level, data-driven core of boto 3
 Requires:       python3-jmespath >= 0.7.1
+%if 0%{?fix_dateutil}
+Requires:       python3-dateutil >= 1.4
+%else
 Requires:       python3-dateutil >= 2.1
+%endif
 Requires:       python3-docutils >= 0.10
 %{?python_provide:%python_provide python3-%{pypi_name}}
 
@@ -100,6 +105,7 @@ Summary:        Documentation for %{name}
 
 %prep
 %setup -q -n %{pypi_name}-%{version}
+%{?fix_dateutil:%patch0 -p1}
 sed -i -e '1 d' botocore/vendored/requests/packages/chardet/chardetect.py
 sed -i -e '1 d' botocore/vendored/requests/certs.py
 rm -rf %{pypi_name}.egg-info
@@ -159,6 +165,9 @@ nosetests-3.5 --with-coverage --cover-erase --cover-package botocore --with-xuni
 %endif # with_docs
 
 %changelog
+* Tue Sep 13 2016 Fabio Alessandro Locati <fale@redhat.com> - 1.4.52-2
+- Add testing support for EL7 using a lower version of dateuil library
+
 * Wed Sep 07 2016 Fabio Alessandro Locati <fale@redhat.com> - 1.4.52-1
 - Update to 1.4.52
 
