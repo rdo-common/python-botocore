@@ -13,7 +13,7 @@
 %global with_docs 0
 
 Name:           python-%{pypi_name}
-Version:        1.4.57
+Version:        1.4.58
 Release:        1%{?dist}
 Summary:        Low-level, data-driven core of boto 3
 
@@ -65,6 +65,7 @@ botocore package is the foundation for the AWS CLI as well as boto3.
 
 %package -n     python2-%{pypi_name}
 Summary:        Low-level, data-driven core of boto 3
+Requires:       python-six
 Requires:       python-jmespath >= 0.7.1
 %if 0%{?fix_dateutil}
 Requires:       python-dateutil >= 1.4
@@ -82,6 +83,7 @@ botocore package is the foundation for the AWS CLI as well as boto3.
 %if 0%{?with_python3}
 %package -n     python3-%{pypi_name}
 Summary:        Low-level, data-driven core of boto 3
+Requires:       python3-six
 Requires:       python3-jmespath >= 0.7.1
 %if 0%{?fix_dateutil}
 Requires:       python3-dateutil >= 1.4
@@ -165,6 +167,10 @@ nosetests-3.5 --with-coverage --cover-erase --cover-package botocore --with-xuni
 %endif # with_docs
 
 %changelog
+* Sun Oct 02 2016 Fabio Alessandro Locati <fale@redhat.com> - 1.4.58-1
+- Update to 1.4.58
+- Add python-six dependency
+
 * Wed Sep 28 2016 Fabio Alessandro Locati <fale@redhat.com> - 1.4.57-1
 - Update to 1.4.57
 
