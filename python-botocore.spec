@@ -1,19 +1,20 @@
 %if 0%{?rhel} && 0%{?rhel} <= 7
-%global with_python3 0
-%global fix_dateutil 1
+%bcond_with python3
+%bcond_without fix_dateutil
 %else
-%global with_python3 1
+%bcond_without python3
+%bcond_with fix_dateutil
 %endif
+
+# Enable tests
+%bcond_with test
+# Disable documentation generation for now
+%bcond_with docs
 
 %global pypi_name botocore
 
-# Enable tests
-%global with_tests 0
-# Disable documentation generation for now
-%global with_docs 0
-
 Name:           python-%{pypi_name}
-Version:        1.4.78
+Version:        1.4.81
 Release:        1%{?dist}
 Summary:        Low-level, data-driven core of boto 3
 
@@ -25,11 +26,11 @@ BuildArch:      noarch
 
 BuildRequires:  python2-devel
 BuildRequires:  python-setuptools
-%if 0%{?with_docs}
+%if %{with docs}
 BuildRequires:  python-sphinx
 BuildRequires:  python-guzzle_sphinx_theme
-%endif # with_docs
-%if 0%{?with_tests}
+%endif # with docs
+%if %{with tests}
 %{?fc23:BuildRequires: mock}
 %{!?fc23:BuildRequires: python2-mock}
 BuildRequires:  python-behave
@@ -39,15 +40,15 @@ BuildRequires:  python-wheel
 BuildRequires:  python-docutils
 BuildRequires:  python-dateutil
 BuildRequires:  python2-jmespath
-%endif # with_tests
-%if 0%{?with_python3}
+%endif # with tests
+%if %{with python3}
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
-%if 0%{?with_docs}
+%if %{with docs}
 BuildRequires:  python3-sphinx
 BuildRequires:  python3-guzzle_sphinx_theme
-%endif # with_docs
-%if 0%{?with_tests}
+%endif # with docs
+%if %{with tests}
 %{?fc24:BuildRequires: python3-behave}
 BuildRequires:  python3-mock
 BuildRequires:  python3-nose
@@ -56,8 +57,8 @@ BuildRequires:  python3-wheel
 BuildRequires:  python3-docutils
 BuildRequires:  python3-dateutil
 BuildRequires:  python3-jmespath
-%endif # with_tests
-%endif # with_python3
+%endif # with tests
+%endif # with python3
 
 %description
 A low-level interface to a growing number of Amazon Web Services. The
@@ -67,11 +68,11 @@ botocore package is the foundation for the AWS CLI as well as boto3.
 Summary:        Low-level, data-driven core of boto 3
 Requires:       python-six
 Requires:       python-jmespath >= 0.7.1
-%if 0%{?fix_dateutil}
+%if %{with fix_dateutil}
 Requires:       python-dateutil >= 1.4
 %else
 Requires:       python-dateutil >= 2.1
-%endif
+%endif # with fix_dateutil
 Requires:       python-docutils >= 0.10
 %{?el6:Provides: python-%{pypi_name}}
 %{?python_provide:%python_provide python2-%{pypi_name}}
@@ -80,16 +81,16 @@ Requires:       python-docutils >= 0.10
 A low-level interface to a growing number of Amazon Web Services. The
 botocore package is the foundation for the AWS CLI as well as boto3.
 
-%if 0%{?with_python3}
+%if %{with python3}
 %package -n     python3-%{pypi_name}
 Summary:        Low-level, data-driven core of boto 3
 Requires:       python3-six
 Requires:       python3-jmespath >= 0.7.1
-%if 0%{?fix_dateutil}
+%if %{with fix_dateutil}
 Requires:       python3-dateutil >= 1.4
 %else
 Requires:       python3-dateutil >= 2.1
-%endif
+%endif # with fix_dateutil
 Requires:       python3-docutils >= 0.10
 %{?python_provide:%python_provide python3-%{pypi_name}}
 
@@ -98,16 +99,18 @@ A low-level interface to a growing number of Amazon Web Services. The
 botocore package is the foundation for the AWS CLI as well as boto3.
 %endif # with_python3
 
-%if 0%{?with_docs}
+%if %{with docs}
 %package doc
 Summary:        Documentation for %{name}
 %description doc
 %{summary}.
-%endif # with_docs
+%endif # with docs
 
 %prep
 %setup -q -n %{pypi_name}-%{version}
-%{?fix_dateutil:%patch0 -p1}
+%if %{with fix_dateutil}
+%patch0 -p1
+%endif # with fix_dateutil
 sed -i -e '1 d' botocore/vendored/requests/packages/chardet/chardetect.py
 sed -i -e '1 d' botocore/vendored/requests/certs.py
 rm -rf %{pypi_name}.egg-info
@@ -116,34 +119,34 @@ rm -rf tests/integration
 
 %build
 %py2_build
-%if 0%{?with_python3}
+%if %{with python3}
 %py3_build
-%endif # with_python3
+%endif # with python3
 
 %install
-%if 0%{?with_python3}
+%if %{with python3}
 %py3_install
-%endif # with_python3
+%endif # with python3
 %py2_install
-%if 0%{?with_docs}
-%if 0%{?with_python3}
+%if %{with docs}
+%if %{with python3}
 sphinx-build-3 docs/source html
 rm -rf html/.{doctrees,buildinfo}
-%else # with_python3
+%else # with python3
 sphinx-build docs/source html
 rm -rf html/.{doctrees,buildinfo}
-%endif # with_python3
-%endif # with_docs
+%endif # with python3
+%endif # with docs
 
-%if 0%{?with_tests}
+%if %{with tests}
 %check
 # %{__python2} setup.py test
 nosetests-2.7 --with-coverage --cover-erase --cover-package botocore --with-xunit --cover-xml -v tests/unit/ tests/functional/
-%if 0%{?with_python3}
+%if %{with python3}
 # %{__python3} setup.py test
 nosetests-3.5 --with-coverage --cover-erase --cover-package botocore --with-xunit --cover-xml -v tests/unit/ tests/functional/
-%endif # with_python3
-%endif # with_tests
+%endif # with python3
+%endif # with tests
 
 %{!?_licensedir:%global license %doc}
 
@@ -153,20 +156,23 @@ nosetests-3.5 --with-coverage --cover-erase --cover-package botocore --with-xuni
 %{python2_sitelib}/%{pypi_name}/
 %{python2_sitelib}/%{pypi_name}-*.egg-info/
 
-%if 0%{?with_python3}
+%if %{with python3}
 %files -n python3-%{pypi_name}
 %doc README.rst
 %license LICENSE.txt
 %{python3_sitelib}/%{pypi_name}/
 %{python3_sitelib}/%{pypi_name}-*.egg-info/
-%endif # with_python3
+%endif # with python3
 
-%if 0%{?with_docs}
+%if %{with docs}
 %files doc
 %doc html
-%endif # with_docs
+%endif # with docs
 
 %changelog
+* Sat Dec 03 2016 Fabio Alessandro Locati <fale@redhat.com> - 1.4.81-1
+- Update to 1.4.81
+
 * Thu Nov 24 2016 Fabio Alessandro Locati <fale@redhat.com> - 1.4.78-1
 - Update to 1.4.78
 
