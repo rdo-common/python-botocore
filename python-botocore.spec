@@ -15,7 +15,7 @@
 
 Name:           python-%{pypi_name}
 Version:        1.4.85
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Low-level, data-driven core of boto 3
 
 License:        ASL 2.0
@@ -170,6 +170,9 @@ nosetests-3.5 --with-coverage --cover-erase --cover-package botocore --with-xuni
 %endif # with docs
 
 %changelog
+* Mon Dec 19 2016 Miro Hrončok <mhroncok@redhat.com> - 1.4.85-2
+- Rebuild for Python 3.6
+
 * Sun Dec 11 2016 Fabio Alessandro Locati <fale@redhat.com> - 1.4.85-1
 - Update to 1.4.85
 
