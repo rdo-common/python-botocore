@@ -14,7 +14,7 @@
 %global pypi_name botocore
 
 Name:           python-%{pypi_name}
-Version:        1.4.85
+Version:        1.4.91
 Release:        1%{?dist}
 Summary:        Low-level, data-driven core of boto 3
 
@@ -170,125 +170,128 @@ nosetests-3.5 --with-coverage --cover-erase --cover-package botocore --with-xuni
 %endif # with docs
 
 %changelog
-* Sun Dec 11 2016 Fabio Alessandro Locati <fale@redhat.com> - 1.4.85-1
+* Wed Dec 28 2016 Fabio Alessandro Locati <fale@fedoraproject.org> - 1.4.91-1
+- Update to 1.4.91
+
+* Sun Dec 11 2016 Fabio Alessandro Locati <fale@fedoraproject.org> - 1.4.85-1
 - Update to 1.4.85
 
-* Sat Dec 03 2016 Fabio Alessandro Locati <fale@redhat.com> - 1.4.81-1
+* Sat Dec 03 2016 Fabio Alessandro Locati <fale@fedoraproject.org> - 1.4.81-1
 - Update to 1.4.81
 
-* Thu Nov 24 2016 Fabio Alessandro Locati <fale@redhat.com> - 1.4.78-1
+* Thu Nov 24 2016 Fabio Alessandro Locati <fale@fedoraproject.org> - 1.4.78-1
 - Update to 1.4.78
 
-* Thu Oct 27 2016 Fabio Alessandro Locati <fale@redhat.com> - 1.4.67-1
+* Thu Oct 27 2016 Fabio Alessandro Locati <fale@fedoraproject.org> - 1.4.67-1
 - Update to 1.4.67
 
-* Mon Oct 10 2016 Fabio Alessandro Locati <fale@redhat.com> - 1.4.60-1
+* Mon Oct 10 2016 Fabio Alessandro Locati <fale@fedoraproject.org> - 1.4.60-1
 - Update to 1.4.60
 
-* Sun Oct 02 2016 Fabio Alessandro Locati <fale@redhat.com> - 1.4.58-1
+* Sun Oct 02 2016 Fabio Alessandro Locati <fale@fedoraproject.org> - 1.4.58-1
 - Update to 1.4.58
 - Add python-six dependency
 
-* Wed Sep 28 2016 Fabio Alessandro Locati <fale@redhat.com> - 1.4.57-1
+* Wed Sep 28 2016 Fabio Alessandro Locati <fale@fedoraproject.org> - 1.4.57-1
 - Update to 1.4.57
 
-* Tue Sep 13 2016 Fabio Alessandro Locati <fale@redhat.com> - 1.4.52-3
+* Tue Sep 13 2016 Fabio Alessandro Locati <fale@fedoraproject.org> - 1.4.52-3
 - Fix patch
 
-* Tue Sep 13 2016 Fabio Alessandro Locati <fale@redhat.com> - 1.4.52-2
+* Tue Sep 13 2016 Fabio Alessandro Locati <fale@fedoraproject.org> - 1.4.52-2
 - Add testing support for EL7 using a lower version of dateuil library
 
-* Wed Sep 07 2016 Fabio Alessandro Locati <fale@redhat.com> - 1.4.52-1
+* Wed Sep 07 2016 Fabio Alessandro Locati <fale@fedoraproject.org> - 1.4.52-1
 - Update to 1.4.52
 
 * Sat Sep 03 2016 Igor Gnatenko <i.gnatenko.brain@gmail.com> - 1.4.50-1
 - Update to 1.4.50
 
-* Wed Aug 24 2016 Fabio Alessandro Locati <fale@redhat.com> - 1.4.49-1
+* Wed Aug 24 2016 Fabio Alessandro Locati <fale@fedoraproject.org> - 1.4.49-1
 - Upstream update
 
-* Tue Aug 23 2016 Fabio Alessandro Locati <fale@redhat.com> - 1.4.48-1
+* Tue Aug 23 2016 Fabio Alessandro Locati <fale@fedoraproject.org> - 1.4.48-1
 - Upstream update
 
-* Fri Aug 05 2016 Fabio Alessandro Locati <fale@redhat.com> - 1.4.43-1
+* Fri Aug 05 2016 Fabio Alessandro Locati <fale@fedoraproject.org> - 1.4.43-1
 - Upstream update
 
-* Thu Aug 04 2016 Fabio Alessandro Locati <fale@redhat.com> - 1.4.42-1
+* Thu Aug 04 2016 Fabio Alessandro Locati <fale@fedoraproject.org> - 1.4.42-1
 - Upstream update
 
-* Tue Aug 02 2016 Fabio Alessandro Locati <fale@redhat.com> - 1.4.41-1
+* Tue Aug 02 2016 Fabio Alessandro Locati <fale@fedoraproject.org> - 1.4.41-1
 - Upstream update
 
 * Tue Jul 19 2016 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.4.35-2
 - https://fedoraproject.org/wiki/Changes/Automatic_Provides_for_Python_RPM_Packages
 
-* Wed Jul 06 2016 Fabio Alessandro Locati <fale@redhat.com> - 1.4.35-1
+* Wed Jul 06 2016 Fabio Alessandro Locati <fale@fedoraproject.org> - 1.4.35-1
 - New version from upstream
 
-* Wed Jun 08 2016 Fabio Alessandro Locati <fale@redhat.com> - 1.4.26-1
+* Wed Jun 08 2016 Fabio Alessandro Locati <fale@fedoraproject.org> - 1.4.26-1
 - New version from upstream
 
-* Sat May 28 2016 Fabio Alessandro Locati <fale@redhat.com> - 1.4.24-1
+* Sat May 28 2016 Fabio Alessandro Locati <fale@fedoraproject.org> - 1.4.24-1
 - New version from upstream
 
-* Tue Mar 29 2016 Fabio Alessandro Locati <fale@redhat.com> - 1.4.7-1
+* Tue Mar 29 2016 Fabio Alessandro Locati <fale@fedoraproject.org> - 1.4.7-1
 - New version from upstream
 
-* Tue Mar 01 2016 Fabio Alessandro Locati <fale@redhat.com> - 1.3.30-1
+* Tue Mar 01 2016 Fabio Alessandro Locati <fale@fedoraproject.org> - 1.3.30-1
 - New version from upstream
 
-* Wed Feb 24 2016 Fabio Alessandro Locati <fale@redhat.com> - 1.3.29-1
+* Wed Feb 24 2016 Fabio Alessandro Locati <fale@fedoraproject.org> - 1.3.29-1
 - New version from upstream
 
-* Fri Feb 19 2016 Fabio Alessandro Locati <fale@redhat.com> - 1.3.28-1
+* Fri Feb 19 2016 Fabio Alessandro Locati <fale@fedoraproject.org> - 1.3.28-1
 - New version from upstream
 
-* Wed Feb 17 2016 Fabio Alessandro Locati <fale@redhat.com> - 1.3.27-1
+* Wed Feb 17 2016 Fabio Alessandro Locati <fale@fedoraproject.org> - 1.3.27-1
 - New version from upstream
 
-* Fri Feb 12 2016 Fabio Alessandro Locati <fale@redhat.com> - 1.3.26-1
+* Fri Feb 12 2016 Fabio Alessandro Locati <fale@fedoraproject.org> - 1.3.26-1
 - New version from upstream
 
-* Wed Feb 10 2016 Fabio Alessandro Locati <fale@redhat.com> - 1.3.25-1
+* Wed Feb 10 2016 Fabio Alessandro Locati <fale@fedoraproject.org> - 1.3.25-1
 - New version from upstream
 
-* Tue Feb 09 2016 Fabio Alessandro Locati <fale@redhat.com> - 1.3.24-1
+* Tue Feb 09 2016 Fabio Alessandro Locati <fale@fedoraproject.org> - 1.3.24-1
 - New version from upstream
 
-* Tue Feb 02 2016 Fabio Alessandro Locati <fale@redhat.com> - 1.3.23-1
+* Tue Feb 02 2016 Fabio Alessandro Locati <fale@fedoraproject.org> - 1.3.23-1
 - New version from upstream
 
-* Fri Jan 22 2016 Fabio Alessandro Locati <fale@redhat.com> - 1.3.22-1
+* Fri Jan 22 2016 Fabio Alessandro Locati <fale@fedoraproject.org> - 1.3.22-1
 - New version from upstream
 
-* Wed Jan 20 2016 Fabio Alessandro Locati <fale@redhat.com> - 1.3.21-1
+* Wed Jan 20 2016 Fabio Alessandro Locati <fale@fedoraproject.org> - 1.3.21-1
 - New version from upstream
 
-* Fri Jan 15 2016 Fabio Alessandro Locati <fale@redhat.com> - 1.3.20-1
+* Fri Jan 15 2016 Fabio Alessandro Locati <fale@fedoraproject.org> - 1.3.20-1
 - New version from upstream
 
-* Fri Jan 15 2016 Fabio Alessandro Locati <fale@redhat.com> - 1.3.19-1
+* Fri Jan 15 2016 Fabio Alessandro Locati <fale@fedoraproject.org> - 1.3.19-1
 - New version from upstream
 
-* Wed Jan 13 2016 Fabio Alessandro Locati <fale@redhat.com> - 1.3.18-1
+* Wed Jan 13 2016 Fabio Alessandro Locati <fale@fedoraproject.org> - 1.3.18-1
 - New version from upstream
 
-* Tue Jan 12 2016 Fabio Alessandro Locati <fale@redhat.com> - 1.3.17-2
+* Tue Jan 12 2016 Fabio Alessandro Locati <fale@fedoraproject.org> - 1.3.17-2
 - Add testing for Fedora
 
-* Thu Jan 07 2016 Fabio Alessandro Locati <fale@redhat.com> - 1.3.17-1
+* Thu Jan 07 2016 Fabio Alessandro Locati <fale@fedoraproject.org> - 1.3.17-1
 - Update to upstream version
 
-* Wed Jan 06 2016 Fabio Alessandro Locati <fale@redhat.com> - 1.3.16-2
+* Wed Jan 06 2016 Fabio Alessandro Locati <fale@fedoraproject.org> - 1.3.16-2
 - Fix shabang on botocore/vendored/requests/packages/chardet/chardetect.py
 - Fix shabang on botocore/vendored/requests/certs.py
 - Remove the useless dependency with python-urllib3
 
-* Wed Jan 06 2016 Fabio Alessandro Locati <fale@redhat.com> - 1.3.16-1
+* Wed Jan 06 2016 Fabio Alessandro Locati <fale@fedoraproject.org> - 1.3.16-1
 - Update to new upstream version
 - Fix Provides for EL6
 
-* Tue Dec 29 2015 Fabio Alessandro Locati <fale@redhat.com> - 1.3.15-1
+* Tue Dec 29 2015 Fabio Alessandro Locati <fale@fedoraproject.org> - 1.3.15-1
 - Update to current version
 - Improve the spec
 
