@@ -173,6 +173,9 @@ nosetests-3.5 --with-coverage --cover-erase --cover-package botocore --with-xuni
 * Wed Dec 28 2016 Fabio Alessandro Locati <fale@fedoraproject.org> - 1.4.91-1
 - Update to 1.4.91
 
+* Mon Dec 19 2016 Miro Hrončok <mhroncok@redhat.com> - 1.4.85-2
+- Rebuild for Python 3.6
+
 * Sun Dec 11 2016 Fabio Alessandro Locati <fale@fedoraproject.org> - 1.4.85-1
 - Update to 1.4.85
 
