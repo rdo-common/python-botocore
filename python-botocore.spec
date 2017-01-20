@@ -14,7 +14,7 @@
 %global pypi_name botocore
 
 Name:           python-%{pypi_name}
-Version:        1.4.91
+Version:        1.5.3
 Release:        1%{?dist}
 Summary:        Low-level, data-driven core of boto 3
 
@@ -24,6 +24,12 @@ Source0:        https://pypi.io/packages/source/b/%{pypi_name}/%{pypi_name}-%{ve
 Patch0:         botocore-1.4.52-fix_dateutil_version.patch
 BuildArch:      noarch
 
+%description
+A low-level interface to a growing number of Amazon Web Services. The
+botocore package is the foundation for the AWS CLI as well as boto3.
+
+%package -n     python2-%{pypi_name}
+Summary:        Low-level, data-driven core of boto 3
 BuildRequires:  python2-devel
 BuildRequires:  python-setuptools
 %if %{with docs}
@@ -41,32 +47,6 @@ BuildRequires:  python-docutils
 BuildRequires:  python-dateutil
 BuildRequires:  python2-jmespath
 %endif # with tests
-%if %{with python3}
-BuildRequires:  python3-devel
-BuildRequires:  python3-setuptools
-%if %{with docs}
-BuildRequires:  python3-sphinx
-BuildRequires:  python3-guzzle_sphinx_theme
-%endif # with docs
-%if %{with tests}
-%{?fc24:BuildRequires: python3-behave}
-BuildRequires:  python3-mock
-BuildRequires:  python3-nose
-BuildRequires:  python3-six
-BuildRequires:  python3-wheel
-BuildRequires:  python3-docutils
-BuildRequires:  python3-dateutil
-BuildRequires:  python3-jmespath
-%endif # with tests
-%endif # with python3
-
-%description
-A low-level interface to a growing number of Amazon Web Services. The
-botocore package is the foundation for the AWS CLI as well as boto3.
-
-%package -n     python2-%{pypi_name}
-Summary:        Low-level, data-driven core of boto 3
-Requires:       python-six
 Requires:       python-jmespath >= 0.7.1
 %if %{with fix_dateutil}
 Requires:       python-dateutil >= 1.4
@@ -84,7 +64,22 @@ botocore package is the foundation for the AWS CLI as well as boto3.
 %if %{with python3}
 %package -n     python3-%{pypi_name}
 Summary:        Low-level, data-driven core of boto 3
-Requires:       python3-six
+BuildRequires:  python3-devel
+BuildRequires:  python3-setuptools
+%if %{with docs}
+BuildRequires:  python3-sphinx
+BuildRequires:  python3-guzzle_sphinx_theme
+%endif # with docs
+%if %{with tests}
+%{?fc24:BuildRequires: python3-behave}
+BuildRequires:  python3-mock
+BuildRequires:  python3-nose
+BuildRequires:  python3-six
+BuildRequires:  python3-wheel
+BuildRequires:  python3-docutils
+BuildRequires:  python3-dateutil
+BuildRequires:  python3-jmespath
+%endif # with tests
 Requires:       python3-jmespath >= 0.7.1
 %if %{with fix_dateutil}
 Requires:       python3-dateutil >= 1.4
@@ -170,6 +165,9 @@ nosetests-3.5 --with-coverage --cover-erase --cover-package botocore --with-xuni
 %endif # with docs
 
 %changelog
+* Fri Jan 20 2017 Fabio Alessandro Locati <fale@fedoraproject.org> - 1.5.3-1
+- Update to 1.5.3
+
 * Wed Dec 28 2016 Fabio Alessandro Locati <fale@fedoraproject.org> - 1.4.91-1
 - Update to 1.4.91
 
