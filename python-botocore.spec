@@ -21,7 +21,7 @@ Summary:        Low-level, data-driven core of boto 3
 License:        ASL 2.0
 URL:            https://github.com/boto/botocore
 Source0:        https://pypi.io/packages/source/b/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
-Patch0:         botocore-1.4.52-fix_dateutil_version.patch
+Patch0:         botocore-1.5.3-fix_dateutil_version.patch
 BuildArch:      noarch
 
 %description
@@ -167,6 +167,7 @@ nosetests-3.5 --with-coverage --cover-erase --cover-package botocore --with-xuni
 %changelog
 * Fri Jan 20 2017 Fabio Alessandro Locati <fale@fedoraproject.org> - 1.5.3-1
 - Update to 1.5.3
+- Rebase patch
 
 * Wed Dec 28 2016 Fabio Alessandro Locati <fale@fedoraproject.org> - 1.4.91-1
 - Update to 1.4.91
