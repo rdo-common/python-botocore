@@ -14,8 +14,8 @@
 %global pypi_name botocore
 
 Name:           python-%{pypi_name}
-Version:        1.5.3
-Release:        2%{?dist}
+Version:        1.5.18
+Release:        1%{?dist}
 Summary:        Low-level, data-driven core of boto 3
 
 License:        ASL 2.0
@@ -165,6 +165,9 @@ nosetests-3.5 --with-coverage --cover-erase --cover-package botocore --with-xuni
 %endif # with docs
 
 %changelog
+* Sat Feb 25 2017 Fabio Alessandro Locati <fale@fedoraproject.org> - 1.5.18-1
+- Update to 1.5.18
+
 * Sat Feb 11 2017 Fedora Release Engineering <releng@fedoraproject.org> - 1.5.3-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_26_Mass_Rebuild
 
