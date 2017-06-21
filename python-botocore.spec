@@ -14,7 +14,7 @@
 %global pypi_name botocore
 
 Name:           python-%{pypi_name}
-Version:        1.5.53
+Version:        1.5.72
 Release:        1%{?dist}
 Summary:        Low-level, data-driven core of boto 3
 
@@ -165,8 +165,11 @@ nosetests-3.5 --with-coverage --cover-erase --cover-package botocore --with-xuni
 %endif # with docs
 
 %changelog
+* Wed Jun 21 2017 Fabio Alessandro Locati <fale@fedoraproject.org> - 1.5.72-1
+- Update to 1.5.72
+
 * Tue May 23 2017 Fabio Alessandro Locati <fale@fedoraproject.org> - 1.5.53-1
-= Update to 1.5.53
+- Update to 1.5.53
 
 * Wed Mar 15 2017 Fabio Alessandro Locati <fale@fedoraproject.org> - 1.5.26-1
 - Update to 1.5.26
