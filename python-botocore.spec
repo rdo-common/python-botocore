@@ -14,7 +14,7 @@
 %global pypi_name botocore
 
 Name:           python-%{pypi_name}
-Version:        1.8.26
+Version:        1.8.29
 Release:        1%{?dist}
 Summary:        Low-level, data-driven core of boto 3
 
@@ -165,6 +165,9 @@ nosetests-3.5 --with-coverage --cover-erase --cover-package botocore --with-xuni
 %endif # with docs
 
 %changelog
+* Tue Jan 16 2018 Charalampos Stratakis <cstratak@redhat.com> - 1.8.29-1
+- Update to 1.8.29
+
 * Wed Jan 10 2018 Charalampos Stratakis <cstratak@redhat.com> - 1.8.26-1
 - Update to 1.8.26
 
