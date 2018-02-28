@@ -15,7 +15,7 @@
 
 Name:           python-%{pypi_name}
 Version:        1.9.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Low-level, data-driven core of boto 3
 
 License:        ASL 2.0
@@ -31,29 +31,29 @@ botocore package is the foundation for the AWS CLI as well as boto3.
 %package -n     python2-%{pypi_name}
 Summary:        Low-level, data-driven core of boto 3
 BuildRequires:  python2-devel
-BuildRequires:  python-setuptools
+BuildRequires:  python2-setuptools
 %if %{with docs}
-BuildRequires:  python-sphinx
+BuildRequires:  python2-sphinx
 BuildRequires:  python-guzzle_sphinx_theme
 %endif # with docs
 %if %{with tests}
 %{?fc23:BuildRequires: mock}
 %{!?fc23:BuildRequires: python2-mock}
-BuildRequires:  python-behave
-BuildRequires:  python-nose
-BuildRequires:  python-six
-BuildRequires:  python-wheel
-BuildRequires:  python-docutils
-BuildRequires:  python-dateutil
+BuildRequires:  python2-behave
+BuildRequires:  python2-nose
+BuildRequires:  python2-six
+BuildRequires:  python2-wheel
+BuildRequires:  python2-docutils
+BuildRequires:  python2-dateutil
 BuildRequires:  python2-jmespath
 %endif # with tests
-Requires:       python-jmespath >= 0.7.1
+Requires:       python2-jmespath >= 0.7.1
 %if %{with fix_dateutil}
-Requires:       python-dateutil >= 1.4
+Requires:       python2-dateutil >= 1.4
 %else
-Requires:       python-dateutil >= 2.1
+Requires:       python2-dateutil >= 2.1
 %endif # with fix_dateutil
-Requires:       python-docutils >= 0.10
+Requires:       python2-docutils >= 0.10
 %{?el6:Provides: python-%{pypi_name}}
 %{?python_provide:%python_provide python2-%{pypi_name}}
 
@@ -165,6 +165,10 @@ nosetests-3.5 --with-coverage --cover-erase --cover-package botocore --with-xuni
 %endif # with docs
 
 %changelog
+* Wed Feb 28 2018 Iryna Shcherbina <ishcherb@redhat.com> - 1.9.1-2
+- Update Python 2 dependency declarations to new packaging standards
+  (See https://fedoraproject.org/wiki/FinalizingFedoraSwitchtoPython3)
+
 * Wed Feb 28 2018 Charalampos Stratakis <cstratak@redhat.com> - 1.9.1-1
 - Update to 1.9.1
 
