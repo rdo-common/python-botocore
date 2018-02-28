@@ -14,8 +14,8 @@
 %global pypi_name botocore
 
 Name:           python-%{pypi_name}
-Version:        1.8.33
-Release:        2%{?dist}
+Version:        1.9.1
+Release:        1%{?dist}
 Summary:        Low-level, data-driven core of boto 3
 
 License:        ASL 2.0
@@ -165,6 +165,9 @@ nosetests-3.5 --with-coverage --cover-erase --cover-package botocore --with-xuni
 %endif # with docs
 
 %changelog
+* Wed Feb 28 2018 Charalampos Stratakis <cstratak@redhat.com> - 1.9.1-1
+- Update to 1.9.1
+
 * Fri Feb 09 2018 Fedora Release Engineering <releng@fedoraproject.org> - 1.8.33-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_28_Mass_Rebuild
 
