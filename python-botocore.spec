@@ -14,8 +14,8 @@
 %global pypi_name botocore
 
 Name:           python-%{pypi_name}
-Version:        1.9.1
-Release:        3%{?dist}
+Version:        1.10.41
+Release:        1%{?dist}
 Summary:        Low-level, data-driven core of boto 3
 
 License:        ASL 2.0
@@ -165,6 +165,9 @@ nosetests-3.5 --with-coverage --cover-erase --cover-package botocore --with-xuni
 %endif # with docs
 
 %changelog
+* Wed Jun 20 2018 hguemar <hguemar@nozarashi.seireitei> - 1.10.41-1
+- Upstream 1.10.41
+
 * Tue Jun 19 2018 Miro Hrončok <mhroncok@redhat.com> - 1.9.1-3
 - Rebuilt for Python 3.7
 
