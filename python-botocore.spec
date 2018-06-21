@@ -15,13 +15,13 @@
 
 Name:           python-%{pypi_name}
 Version:        1.10.41
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Low-level, data-driven core of boto 3
 
 License:        ASL 2.0
 URL:            https://github.com/boto/botocore
 Source0:        https://pypi.io/packages/source/b/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
-Patch0:         botocore-1.5.3-fix_dateutil_version.patch
+Patch0:         0001-Fix-date-util-version-for-EL7.patch
 BuildArch:      noarch
 
 %description
@@ -158,14 +158,16 @@ nosetests-3.5 --with-coverage --cover-erase --cover-package botocore --with-xuni
 %{python3_sitelib}/%{pypi_name}/
 %{python3_sitelib}/%{pypi_name}-*.egg-info/
 %endif # with python3
-
 %if %{with docs}
 %files doc
 %doc html
 %endif # with docs
 
 %changelog
-* Wed Jun 20 2018 hguemar <hguemar@nozarashi.seireitei> - 1.10.41-1
+* Wed Jun 20 2018 Haïkel Guémar <hguemar@fedoraproject.org> - 1.10.41-2
+- Fix EL7 dateutil patch
+
+* Wed Jun 20 2018 Haïkel Guémar <hguemar@fedoraproject.org> - 1.10.41-1
 - Upstream 1.10.41
 
 * Tue Jun 19 2018 Miro Hrončok <mhroncok@redhat.com> - 1.9.1-3
