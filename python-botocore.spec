@@ -15,7 +15,7 @@
 
 Name:           python-%{pypi_name}
 Version:        1.10.41
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Low-level, data-driven core of boto 3
 
 License:        ASL 2.0
@@ -164,6 +164,9 @@ nosetests-3.5 --with-coverage --cover-erase --cover-package botocore --with-xuni
 %endif # with docs
 
 %changelog
+* Mon Jul 02 2018 Miro Hrončok <mhroncok@redhat.com> - 1.10.41-3
+- Rebuilt for Python 3.7
+
 * Wed Jun 20 2018 Haïkel Guémar <hguemar@fedoraproject.org> - 1.10.41-2
 - Fix EL7 dateutil patch
 
