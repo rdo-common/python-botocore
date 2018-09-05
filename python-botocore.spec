@@ -164,8 +164,8 @@ nosetests-3.5 --with-coverage --cover-erase --cover-package botocore --with-xuni
 %endif # with docs
 
 %changelog
-* Mon Sep 4 2018 David Duncan <davdunc@amazon.com> - 1.10.42-1
-- Bumping version to 1.10.42
+* Mon Sep 3 2018 David Duncan <davdunc@amazon.com> - 1.10.42-1
+- Bumping version to 1.10.42 Updates bz#1531330
 
 * Fri Jul 13 2018 Fedora Release Engineering <releng@fedoraproject.org> - 1.10.41-4
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_29_Mass_Rebuild
