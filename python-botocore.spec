@@ -15,7 +15,7 @@
 
 Name:           python-%{pypi_name}
 Version:        1.12.15
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Low-level, data-driven core of boto 3
 
 License:        ASL 2.0
@@ -54,6 +54,7 @@ Requires:       python2-dateutil >= 1.4
 Requires:       python2-dateutil >= 2.1
 %endif # with fix_dateutil
 Requires:       python2-docutils >= 0.10
+Requires:       python2-urllib3
 %{?el6:Provides: python-%{pypi_name}}
 %{?python_provide:%python_provide python2-%{pypi_name}}
 
@@ -87,6 +88,7 @@ Requires:       python3-dateutil >= 1.4
 Requires:       python3-dateutil >= 2.1
 %endif # with fix_dateutil
 Requires:       python3-docutils >= 0.10
+Requires:       python3-urllib3
 %{?python_provide:%python_provide python3-%{pypi_name}}
 
 %description -n python3-%{pypi_name}
@@ -164,6 +166,9 @@ nosetests-3.5 --with-coverage --cover-erase --cover-package botocore --with-xuni
 %endif # with docs
 
 %changelog
+* Tue Oct 02 2018 Charalampos Stratakis <cstratak@redhat.com> - 1.12.15-2
+- Reinstate python-urllib3 dependency as python-boto3 requires it
+
 * Tue Oct 02 2018 Charalampos Stratakis <cstratak@redhat.com> - 1.12.15-1
 - Update to 1.12.15
 
