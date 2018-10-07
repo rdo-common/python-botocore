@@ -15,7 +15,7 @@
 
 Name:           python-%{pypi_name}
 Version:        1.12.18
-Release:        2%{?dist}
+Release:        1%{?dist}
 Summary:        Low-level, data-driven core of boto 3
 
 License:        ASL 2.0
