@@ -14,7 +14,7 @@
 %global pypi_name botocore
 
 Name:           python-%{pypi_name}
-Version:        1.12.18
+Version:        1.12.47
 Release:        1%{?dist}
 Summary:        Low-level, data-driven core of boto 3
 
@@ -166,6 +166,9 @@ nosetests-3.5 --with-coverage --cover-erase --cover-package botocore --with-xuni
 %endif # with docs
 
 %changelog
+* Sun Nov 18 2018 David Duncan <davdunc@amazon.com> - 1.12.47
+- Update to latest models.
+
 * Sun Oct 07 2018 David Duncan <davdunc@amazon.com> - 1.12.18
 - Update to latest models 
 
