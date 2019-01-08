@@ -14,7 +14,7 @@
 %global pypi_name botocore
 
 Name:           python-%{pypi_name}
-Version:        1.12.47
+Version:        1.12.75
 Release:        1%{?dist}
 Summary:        Low-level, data-driven core of boto 3
 
@@ -88,7 +88,7 @@ Requires:       python3-dateutil >= 1.4
 Requires:       python3-dateutil >= 2.1
 %endif # with fix_dateutil
 Requires:       python3-docutils >= 0.10
-Requires:       python3-urllib3
+Requires:       python3-urllib3 >= 1.20
 %{?python_provide:%python_provide python3-%{pypi_name}}
 
 %description -n python3-%{pypi_name}
@@ -166,6 +166,10 @@ nosetests-3.5 --with-coverage --cover-erase --cover-package botocore --with-xuni
 %endif # with docs
 
 %changelog
+* Tue Jan 08 2019 David Duncan <davdunc@amazon.com> - 1.12.75
+- Update to latest endpoints
+- Update to latest models
+
 * Sun Nov 18 2018 David Duncan <davdunc@amazon.com> - 1.12.47
 - Update to latest models.
 
