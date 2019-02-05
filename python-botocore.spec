@@ -1,10 +1,10 @@
 %if 0%{?rhel} && 0%{?rhel} <= 7
 %bcond_with python3
-%bcond_without fix_dateutil
 %else
 %bcond_without python3
-%bcond_with fix_dateutil
 %endif
+
+%bcond_with fix_dateutil
 
 # Enable tests
 %bcond_with test
@@ -43,7 +43,7 @@ BuildRequires:  python2-behave
 BuildRequires:  python2-nose
 BuildRequires:  python2-six
 BuildRequires:  python2-wheel
-BuildRequires:  python2-docutils
+BuildRequires:  python-docutils
 BuildRequires:  python2-dateutil
 BuildRequires:  python2-jmespath
 %endif # with tests
@@ -53,7 +53,7 @@ Requires:       python2-dateutil >= 1.4
 %else
 Requires:       python2-dateutil >= 2.1
 %endif # with fix_dateutil
-Requires:       python2-docutils >= 0.10
+Requires:       python-docutils >= 0.10
 Requires:       python2-urllib3
 %{?el6:Provides: python-%{pypi_name}}
 %{?python_provide:%python_provide python2-%{pypi_name}}
